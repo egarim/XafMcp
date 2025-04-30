@@ -57,6 +57,10 @@ namespace XafMcp.Module.BusinessObjects
             get => active;
             set => SetPropertyValue(nameof(Active), ref active, value);
         }
+        public override string ToString()
+        {
+            return $"{Name},{Active} ({Address})";
+        }
 
     }
 }

@@ -1,0 +1,15 @@
+{
+    "inputs": [],
+    "servers": {
+        "XafMCP": {
+            "type": "stdio",
+            "command": "dotnet",
+            "args": [
+                "run",
+                "--project",
+                "C:\\Users\\joche\\source\\repos\\XafMcp\\MyXafMcp\\MyXafMcp.csproj",
+                "--no-build"
+            ]
+        }
+    }
+}

@@ -4,6 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ModelContextProtocol.Server;
+using MyXafMcp;
 using System.ComponentModel;
 using XafMcp.Module.BusinessObjects;
 
@@ -20,11 +21,13 @@ builder.Logging.AddConsole(consoleLogOptions =>
     consoleLogOptions.LogToStandardErrorThreshold = LogLevel.Trace;
 });
 
-XpoTypesInfoHelper.GetXpoTypeInfoSource();
-XafTypesInfo.Instance.RegisterEntity(typeof(Customer));
-XPObjectSpaceProvider osProvider = new XPObjectSpaceProvider(
-@"integrated security=SSPI;pooling=false;data source=(localdb)\MSSQLLocalDB;initial catalog=MainDemo_", null);
-IObjectSpace objectSpace = osProvider.CreateObjectSpace();
+
+
+//HACK https://docs.devexpress.com/eXpressAppFramework/113709/data-manipulation-and-business-logic/access-xaf-application-data-in-a-non-xaf-application
+//HACK https://devblogs.microsoft.com/dotnet/build-a-model-context-protocol-mcp-server-in-csharp/
+
+
+var customers=XafMpcTool.QueryCustomers("Active = true");
 
 
 
