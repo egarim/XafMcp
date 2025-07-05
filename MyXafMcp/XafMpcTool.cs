@@ -29,7 +29,7 @@ namespace MyXafMcp
         public static string QueryCustomers(string Criteria)
         {
 
-            var CriteriaObject = CriteriaOperator.Parse(Criteria);  
+            var CriteriaObject = CriteriaOperator.Parse(Criteria);
             var os = osProvider.CreateObjectSpace();
             Console.WriteLine($"QueryCustomers: {Criteria}");
             Debug.WriteLine($"QueryCustomers: {Criteria}");
@@ -37,7 +37,7 @@ namespace MyXafMcp
             StringBuilder stringBuilder = new StringBuilder();
             foreach (Customer customer in customers)
             {
-                
+
                 stringBuilder.AppendLine(customer.ToString());
             }
 
@@ -45,19 +45,39 @@ namespace MyXafMcp
 
             return stringBuilder.ToString();
         }
-        [McpServerTool, Description("Takes the name of an entity and retive a comma separated list of their properties")]
+        [McpServerTool, Description("Takes the name of an entity and retrieves a comma separated list of their properties")]
         public static string GetEntityProperties(string EntityName)
         {
+            if(EntityName.Contains("Product"))
+            {
+                return "Name,Address,Active";
+            }
+            if (EntityName.Contains("Customer"))
+            {
+                return "Name,Address,Active";
+            }
+            else
+            {
+                return "No properties found";
+            }
 
-          
+        }
+        [McpServerTool, Description("Create a product and returns its Oid")]
+        public static string CreateProduct(string Name, string Description)
+        {
 
+            var os = osProvider.CreateObjectSpace();
+            var product = os.CreateObject<Product>();
+            product.Name = Name;
+            product.Description = Description;
 
+            os.CommitChanges();
 
-            return "Name,Address,Active";
+            return product.Oid.ToString();
         }
 
         [McpServerTool, Description("Create a customer and returns its Oid")]
-        public static string CreateCustomer(string Name,string Address)
+        public static string CreateCustomer(string Name, string Address)
         {
 
             var os = osProvider.CreateObjectSpace();

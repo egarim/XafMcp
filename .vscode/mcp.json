@@ -1,14 +1,10 @@
 {
     "inputs": [],
     "servers": {
-        "MyFirstMCP": {
+        "XAF MCP Server": {
             "type": "stdio",
-            "command": "dotnet",
-            "args": [
-                "run",
-                "--project",
-                "C:\\Users\\joche\\source\\repos\\XafMcp\\MyXafMcp\\MyXafMcp.csproj"
-            ]
+            "command": "C:\\Users\\joche\\source\\repos\\XafMcp\\MyXafMcp\\bin\\Release\\net9.0\\publish\\win-x64\\MyXafMcp.exe",
+            "args": []
         }
     }
 }

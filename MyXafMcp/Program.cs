@@ -27,7 +27,7 @@ builder.Logging.AddConsole(consoleLogOptions =>
 //HACK https://devblogs.microsoft.com/dotnet/build-a-model-context-protocol-mcp-server-in-csharp/
 
 
-var customers=XafMpcTool.QueryCustomers("Active = true");
+//var customers=XafMpcTool.QueryCustomers("Active = true");
 
 
 
